@@ -1,13 +1,66 @@
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>sparkmails</title>
 </head>
 
 <body>
-  {{> hello}}
+	{{renderPage}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="home">
+  <div class="container">
+		{{> nav}}
+		<div class="row">
+			<div class="span12">
+	  		<p>This is the writing area.</p>
+	  		<textarea rows="5" class="sparkinput"></textarea>
+	  	</div>
+	  </div>
+
+	  {{> sparkText}}
+  </div>
+</template>
+
+<template name="sparkText">
+	<div class="row">
+		<p class="space"></p>
+	</div>
+	<div class="row">
+	  	<div class="span6">
+	  		<p>This is the scrolling area.</p>
+	  		{{#each sparks}}
+	  			<p>{{spark}}</p>
+	  			<p>----</p>
+	  		{{/each}}
+	  	</div>
+	  </div>
+</template>
+
+<template name="nav">
+  <div class="btn-group masternav">
+	  <button class="btn">Home</button>
+	  <button class="btn">MindMaps</button>
+	  <button class="btn">Settings</button>
+	</div>
+</template>
+
+<template name="mindmaps">
+  <div class="container">
+		{{> nav}}
+		<div class="row">
+			<div class="span12">
+	  		<p>Tags area.</p>
+	  	</div>
+	  </div>
+
+	  <div class="row">
+	  	<div class="span12">
+	  		<p>Maps area.</p>
+	  	</div>
+	  </div>
+  </div>
+</template>
+
+<template name="settings">
+  
 </template>

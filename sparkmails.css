@@ -1,1 +1,17 @@
 /* CSS declarations go here */
+.container{
+	background-color: #ccc;
+	width:700px;
+}
+
+.masternav{
+	margin:0 220px;
+}
+
+.sparkinput{
+	width:686px;
+}
+
+.space{
+	height:50px;
+}
