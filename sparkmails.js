@@ -1,6 +1,16 @@
 Sparks = new Meteor.Collection('sparks');
 
 if (Meteor.isClient) {
+  Meteor.startup(function () {
+    var i = 0;
+    $("#verticalScroller > div").each(function () {
+      console.log("this works now");
+      $(this).css("top", i);
+      i += 60;
+      verticalScroller($(this));
+    });
+
+  });
 
   Meteor.Router.add({
     '/': 'home',
@@ -23,6 +33,19 @@ if (Meteor.isClient) {
       }
     }
   });
+
+  Template.home.verticalScroller = function($elem) {
+    console.log("it runs");
+    var top = parseInt($elem.css("top"));
+    var temp = -1 * $('#verticalScroller > div').height();
+    if(top < temp) {
+        top = $('#verticalScroller').height()
+        $elem.css("top", top);
+    }
+    $elem.animate({ top: (parseInt(top)-60) }, 2000, function () {
+      window.verticalScroller($(this))
+    });
+  }
 
   Template.sparkText.sparks = function(){
     return Sparks.find();
